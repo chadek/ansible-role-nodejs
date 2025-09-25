@@ -13,11 +13,11 @@ name: Release
 
 
 env:
-  APP_NAME: chadek.deploy_archive
+  APP_NAME: chadek.nodejs
 
 defaults:
   run:
-    working-directory: chadek.deploy_archive
+    working-directory: chadek.nodejs
 
 jobs:
   release:
