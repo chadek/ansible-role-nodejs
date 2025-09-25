@@ -6,17 +6,20 @@
 # See: https://github.com/ansible/galaxy/issues/46
 
 name: Release
-'on':
+"on":
   push:
     tags:
-      - '*'
+      - "*"
+
+
+env:
+  APP_NAME: chadek.deploy_archive
 
 defaults:
   run:
-    working-directory: 'geerlingguy.nodejs'
+    working-directory: chadek.deploy_archive
 
 jobs:
-
   release:
     name: Release
     runs-on: ubuntu-latest
@@ -24,15 +27,7 @@ jobs:
       - name: Check out the codebase.
         uses: actions/checkout@v4
         with:
-          path: 'geerlingguy.nodejs'
-
-      - name: Set up Python 3.
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.x'
-
-      - name: Install Ansible.
-        run: pip3 install ansible-core
+          path: ${{ env.APP_NAME }}
 
       - name: Trigger a new import on Galaxy.
         run: >-
